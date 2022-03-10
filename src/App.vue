@@ -5,20 +5,31 @@
 
   <label for="cep">CEP </label>
   <input type="text" name="cep" id="cep" v-model="cep"> <!-- VINCULANDO INPUT AO OBJETO CEP -->
-  <button>Pesquisar</button>
+  <button @click="buscarCep">Pesquisar</button> <!-- EVENTO CLICK PARA CHAMAR O METODO -->
 
 </template>
 
 <script>
-
-
+// IMPORTACOES
+import axios from "axios";  // ADICIONADO INSTANCIA AXIOS AO PROJETO
 
 export default {
   name: 'App',
   data(){
     return{
       cep: '15780000',
-
+    }
+  },
+  // DEFININDO OBJETO METHODS
+  methods: {
+    buscarCep(){
+      axios({ // USA INSTANCIA AXIOS
+        method: 'get',
+        url: `https://viacep.com.br/ws/${this.cep}/json`,
+        responseType: 'json'
+      }).then( (response) => {
+        console.log(response.data);
+        }); // THEN E QUANDO VEM A REPOSTA
     }
   }
 }
