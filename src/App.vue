@@ -4,7 +4,7 @@
   <h1>Usando via CEP</h1>
 
   <label for="cep">CEP </label>
-  <input type="text" name="cep" id="cep" v-model="cep"> <!-- VINCULANDO INPUT AO OBJETO CEP -->
+  <input type="text" name="cep" id="cep" v-model="cep" placeholder="Exemplo: 15780000" autofocus> <!-- VINCULANDO INPUT AO OBJETO CEP -->
   <button @click="buscarCep">Pesquisar</button> <!-- EVENTO CLICK PARA CHAMAR O METODO -->
 
 </template>
@@ -17,7 +17,15 @@ export default {
   name: 'App',
   data(){
     return{
-      cep: '15780000',
+      cep: '',
+      // DECLARANDO OBJETO dadosCep
+      dadosCep: {
+        cep: '',
+        cidade: '',
+        uf: '',
+        bairro: '',
+        logradouro: '',
+      }
     }
   },
   // DEFININDO OBJETO METHODS
