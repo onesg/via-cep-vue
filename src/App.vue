@@ -1,20 +1,33 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+  <h1>Usando via CEP</h1>
+
+  <label for="cep">CEP </label>
+  <input type="text" name="cep" id="cep" v-model="cep"> <!-- VINCULANDO INPUT AO OBJETO CEP -->
+  <button>Pesquisar</button>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data(){
+    return{
+      cep: '15780000',
+
+    }
   }
 }
 </script>
 
 <style>
+  body{
+    background-color: white;
+  }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
