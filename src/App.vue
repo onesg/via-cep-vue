@@ -7,6 +7,12 @@
   <input type="text" name="cep" id="cep" v-model="cep" placeholder="Exemplo: 15780000" autofocus> <!-- VINCULANDO INPUT AO OBJETO CEP -->
   <button @click="buscarCep">Pesquisar</button> <!-- EVENTO CLICK PARA CHAMAR O METODO -->
 
+  <hr>
+
+  <p><strong>Cidade: </strong>{{dadosCep.cidade}}/{{dadosCep.uf}}</p>
+  <p><strong>Bairro: </strong>{{dadosCep.bairro}}</p>
+  <p><strong>Logradouro: </strong>{{dadosCep.logradouro}}</p>
+
 </template>
 
 <script>
@@ -36,8 +42,17 @@ export default {
         url: `https://viacep.com.br/ws/${this.cep}/json`,
         responseType: 'json'
       }).then( (response) => {
-        console.log(response.data);
+        //console.log(response.data);
+        this.mostrarDados(response.data); // 
         }); // THEN E QUANDO VEM A REPOSTA
+    },
+    mostrarDados(dados){
+      // mostrarDados IRA PEGAR DADOS DA RESPOSTA E ALIMENTA O dadosCep
+      this.dadosCep.cep = dados.cep;
+      this.dadosCep.cidade = dados.localidade;
+      this.dadosCep.uf = dados.uf;
+      this.dadosCep.bairro = dados.bairro;
+      this.dadosCep.logradouro = dados.logradouro;
     }
   }
 }
