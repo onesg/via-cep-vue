@@ -31,7 +31,7 @@ export default {
         uf: '',
         bairro: '',
         logradouro: '',
-      }
+      },
     }
   },
   // DEFININDO OBJETO METHODS
@@ -53,7 +53,7 @@ export default {
       this.dadosCep.uf = dados.uf;
       this.dadosCep.bairro = dados.bairro;
       this.dadosCep.logradouro = dados.logradouro;
-    }
+    },
   }
 }
 </script>
